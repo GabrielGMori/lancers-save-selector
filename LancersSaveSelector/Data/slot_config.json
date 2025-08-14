@@ -1,0 +1,46 @@
+{
+	"Default": {
+		"Chapter1": {
+			"Slot0": null,
+			"Slot1": null,
+			"Slot2": null
+		},
+		"Chapter2": {
+			"Slot0": null,
+			"Slot1": null,
+			"Slot2": null
+		},
+		"Chapter3": {
+			"Slot0": null,
+			"Slot1": null,
+			"Slot2": null
+		},
+		"Chapter4": {
+			"Slot0": null,
+			"Slot1": null,
+			"Slot2": null
+		}
+	},
+	"Completion": {
+		"Chapter1": {
+			"Slot0": null,
+			"Slot1": null,
+			"Slot2": null
+		},
+		"Chapter2": {
+			"Slot0": null,
+			"Slot1": null,
+			"Slot2": null
+		},
+		"Chapter3": {
+			"Slot0": null,
+			"Slot1": null,
+			"Slot2": null
+		},
+		"Chapter4": {
+			"Slot0": null,
+			"Slot1": null,
+			"Slot2": null
+		}
+	}
+}
