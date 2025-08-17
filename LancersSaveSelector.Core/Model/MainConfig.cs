@@ -1,10 +1,10 @@
-﻿namespace LancersSaveSelector.Model
+﻿namespace LancersSaveSelector.Core.Model
 {
-	internal class MainConfig
+	public class MainConfig
 	{
-		public bool SeenIntro {  get; set; }
+		public bool SeenIntro { get; set; }
 		public bool Fullscreen { get; set; }
-		public int BackgroundTrack {  get; set; }
+		public int BackgroundTrack { get; set; }
 		public bool MuteBackgroundMusic {  get; set; }
 		public bool MuteSoundEffects {  get; set; }
 		public string? SaveFilesDirectory {  get; set; }

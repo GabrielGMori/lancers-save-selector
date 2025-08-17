@@ -1,7 +1,7 @@
 ﻿using System.ComponentModel;
 using System.Runtime.CompilerServices;
 
-namespace LancersSaveSelector.Utility
+namespace LancersSaveSelector.Windows.Utility
 {
 	internal class ObservableItem : INotifyPropertyChanged
 	{

@@ -7,6 +7,9 @@
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
     <StackPanel>
-		
+		<TextBlock Text="{Binding ConfigVariable}" FontSize="16"
+				   HorizontalAlignment="Center" VerticalAlignment="Center"/>
+		<Button Content="Change" Width="75" Height="30"
+				Command="{Binding ChangeCommand}"/>
 	</StackPanel>
 </Window>

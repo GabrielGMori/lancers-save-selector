@@ -1,4 +1,4 @@
-﻿namespace LancersSaveSelector.FileManager.Interface
+﻿namespace LancersSaveSelector.Core.FileManager.Interface
 {
 	internal interface IGameManager
 	{

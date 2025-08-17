@@ -1,11 +1,11 @@
 ﻿using System.Windows.Input;
 
-namespace LancersSaveSelector.Utility
+namespace LancersSaveSelector.Windows.Utility
 {
-	internal class RelayCommand(Action<object> execute, Func<object, bool>? canExecute = null) : ICommand
+	public class RelayCommand(Action<object> execute, Func<object, bool>? canExecute = null) : ICommand
 	{
-		private readonly Action<object> execute = execute;
-		private readonly Func<object, bool>? canExecute = canExecute;
+		private readonly Action<object> _execute = execute;
+		private readonly Func<object, bool>? _canExecute = canExecute;
 
 		public event EventHandler? CanExecuteChanged
 		{
@@ -15,12 +15,12 @@ namespace LancersSaveSelector.Utility
 
 		public bool CanExecute(object? parameter)
 		{
-			return canExecute == null || canExecute(parameter!);
+			return _canExecute == null || _canExecute(parameter!);
 		}
 
 		public void Execute(object? parameter)
 		{
-			execute(parameter!);
+			_execute(parameter!);
 		}
 	}
 }

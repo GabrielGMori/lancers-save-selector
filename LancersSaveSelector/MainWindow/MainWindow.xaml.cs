@@ -1,15 +1,14 @@
-﻿using LancersSaveSelector.ViewModel;
+﻿using LancersSaveSelector.Windows.MainWindow.Interface;
 using System.Windows;
 
 namespace LancersSaveSelector
 {
     public partial class MainWindow : Window
     {
-		public MainWindow()
+		public MainWindow(IMainViewModel viewModel)
         {
 			InitializeComponent();
-            MainWindowVM vm = new();
-            DataContext = vm;
+            DataContext = viewModel;
         }
     }
 }

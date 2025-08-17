@@ -1,12 +1,14 @@
-﻿using LancersSaveSelector.Model;
+﻿using LancersSaveSelector.Core.Model;
 using System.Collections.ObjectModel;
 
-namespace LancersSaveSelector.FileManager.Interface
+namespace LancersSaveSelector.Core.FileManager.Interface
 {
-	internal interface ISaveFileManager
+	public interface ISaveFileManager
 	{
-		Task<ObservableCollection<SaveFile>> GetByChapter(int chapter, string fileType = "Default");
-		Task<ActiveSaveFileList> GetActive();
+		ActiveSaveFiles ActiveSaveFiles { get; }
+
+		ObservableCollection<SaveFile> GetByChapter(int chapter, string fileType = "Default");
+		Task LoadActiveFiles();
 
 		void ReplaceSlot(int slot, SaveFile newSaveFile);
 		void EmptySlot(int slot);
