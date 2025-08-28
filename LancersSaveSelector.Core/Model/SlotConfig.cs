@@ -1,10 +1,10 @@
 ﻿namespace LancersSaveSelector.Core.Model
 {
-	public class ActiveSaveFiles
+	public class SlotConfig
 	{
 		public Dictionary<string, Dictionary<string, List<SaveFile?>>> FileDict { get; set; }
 
-		public ActiveSaveFiles()
+		public SlotConfig()
 		{
 			FileDict = new()
 			{

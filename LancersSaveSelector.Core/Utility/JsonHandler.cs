@@ -12,18 +12,10 @@ namespace LancersSaveSelector.Core.Utility
 			{
 				throw new ArgumentNullException(nameof(filePath), $"{nameof(filePath)} cannot be empty.");
 			}
-			else if (!File.Exists(filePath))
-			{
-				throw new FileNotFoundException($"No file found in {filePath}");
-			}
 
-			try
-			{
-				using Stream openReadStream = File.OpenRead(filePath);
-				T? obj = await JsonSerializer.DeserializeAsync<T>(openReadStream);
-				return obj ?? throw new Exception("Could not load JSON file.");
-			}
-			catch { throw; }
+			using Stream openReadStream = File.OpenRead(filePath);
+			T? obj = await JsonSerializer.DeserializeAsync<T>(openReadStream);
+			return obj ?? throw new Exception("Could not load JSON file.");
 		}
 
 		public static async Task WriteToJson(string filePath, object obj)
@@ -32,17 +24,9 @@ namespace LancersSaveSelector.Core.Utility
 			{
 				throw new ArgumentNullException(nameof(filePath), $"{nameof(filePath)} cannot be empty.");
 			}
-			else if (!File.Exists(filePath))
-			{
-				throw new FileNotFoundException($"No file found in {filePath}");
-			}
 
-			try
-			{
-				string jsonString = JsonSerializer.Serialize(obj, _serializerOptions);
-				await File.WriteAllTextAsync(filePath, jsonString);
-			}
-			catch { throw; }
+			string jsonString = JsonSerializer.Serialize(obj, _serializerOptions);
+			await File.WriteAllTextAsync(filePath, jsonString);
 		}
 	}
 }

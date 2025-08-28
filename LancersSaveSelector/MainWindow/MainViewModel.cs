@@ -1,10 +1,7 @@
-﻿using LancersSaveSelector.Windows.FileManager;
-using LancersSaveSelector.Windows.FileManager.Interface;
-using LancersSaveSelector.Windows.Model;
-using LancersSaveSelector.Windows.Utility;
+﻿using LancersSaveSelector.Core.FileManager.Interface;
 using LancersSaveSelector.Windows.MainWindow.Interface;
-using System.Collections.ObjectModel;
-using System.Diagnostics;
+using LancersSaveSelector.Windows.Utility;
+using System.IO;
 
 namespace LancersSaveSelector.Windows.MainWindow
 {
@@ -13,8 +10,8 @@ namespace LancersSaveSelector.Windows.MainWindow
 		private readonly IMainConfigManager _mainConfigManager;
 		private readonly ISaveFileManager _saveFileManager;
 
-		private int _configVariable;
-		public int ConfigVariable
+		private string _configVariable;
+		public string ConfigVariable
 		{
 			get { return _configVariable; }
 			set
@@ -32,27 +29,28 @@ namespace LancersSaveSelector.Windows.MainWindow
 			_saveFileManager = saveFileManager;
 			try
 			{
-				_saveFileManager.LoadActiveFiles();
+				_saveFileManager.LoadSlotConfig();
 				_mainConfigManager.LoadFromFile();
-				ConfigVariable = _mainConfigManager.MainConfig.BackgroundTrack;
+				_configVariable = _mainConfigManager.MainConfig.BackgroundTrack.ToString();
 			}
 			catch
 			{
-				ConfigVariable = 500;
+				_configVariable = "500";
 			}
 		}
 
 		public void Change()
 		{
-			var file = _saveFileManager.ActiveSaveFiles.FileDict["Default"]["Chapter1"][0];
+			//var file = _saveFileManager.SlotConfig.FileDict["Default"]["Chapter1"][0];
+			bool file = Directory.Exists(Path.Combine(AppDomain.CurrentDomain.BaseDirectory, @"Data"));
 
-			if (file == null)
+			if (file == false)
 			{
-				ConfigVariable = 404;
+				ConfigVariable = "404";
 			}
 			else
 			{
-				ConfigVariable = 200;
+				ConfigVariable = AppDomain.CurrentDomain.BaseDirectory.ToLower();
 			}
 		}
 	}

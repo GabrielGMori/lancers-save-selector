@@ -9,19 +9,11 @@
 	</PropertyGroup>
 
 	<ItemGroup>
-		<Content Include="Data\**">
-			<CopyToOutputDirectory>Always</CopyToOutputDirectory>
-		</Content>
-		<Content Include="Backups\This is where your backups will be stored">
-			<CopyToOutputDirectory>Always</CopyToOutputDirectory>
-		</Content>
-		<Content Include="main_config.json">
-			<CopyToOutputDirectory>Always</CopyToOutputDirectory>
-		</Content>
+	  <PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="9.0.8" />
 	</ItemGroup>
 
 	<ItemGroup>
-	  <PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="9.0.8" />
+	  <ProjectReference Include="..\LancersSaveSelector.Core\LancersSaveSelector.Core.csproj" />
 	</ItemGroup>
 
 </Project>

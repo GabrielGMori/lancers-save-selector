@@ -5,26 +5,26 @@ namespace LancersSaveSelector.Core.FileManager.Interface
 {
 	public interface ISaveFileManager
 	{
-		ActiveSaveFiles ActiveSaveFiles { get; }
+		SlotConfig SlotConfig { get; }
 
 		ObservableCollection<SaveFile> GetByChapter(int chapter, string fileType = "Default");
-		Task LoadActiveFiles();
+		Task LoadSlotConfig();
 
-		void ReplaceSlot(int slot, SaveFile newSaveFile);
-		void EmptySlot(int slot);
-		void SwapSlots(int slot1, int slot2);
+		Task ReplaceSlot(int slot, SaveFile newSaveFile);
+		Task EmptySlot(int slot);
+		Task SwapSlots(int slot1, int slot2);
 
-		void RenameFile(SaveFile saveFile, string newName);
+		Task RenameFile(SaveFile saveFile, string newName);
 		void UpdateData(SaveFile saveFile, string newData);
 
-		void EraseFile(SaveFile saveFile);
-		void CopyFile(SaveFile saveFile);
+		Task EraseFile(SaveFile saveFile);
+		Task CopyFile(SaveFile saveFile);
 
 		bool InGameFileExist(int chapter, string fileType = "Default");
-		void LoadFromGameFiles();
-		void SaveToGameFiles();
+		Task LoadFromGameFiles();
+		Task SaveToGameFiles();
 
-		void CreateBackup();
-		void LoadBackup(string backupDirectoryPath);
+		Task CreateBackup();
+		Task LoadBackup(string backupDirectoryPath);
 	}
 }
