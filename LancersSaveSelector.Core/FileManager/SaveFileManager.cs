@@ -14,55 +14,6 @@ namespace LancersSaveSelector.Core.FileManager
 		private readonly string _defaultFilesPath = Path.Combine(dataDirectoryPath, "Default");
 		private readonly string _completionFilesPath = Path.Combine(dataDirectoryPath, "Completion");
 
-
-		// File and Directory Ensures
-		private void EnsureDataDirectory()
-		{
-			if (!Directory.Exists(dataDirectoryPath))
-			{
-				Directory.CreateDirectory(dataDirectoryPath);
-			}
-		}
-
-		private void EnsureBackupsDirectory()
-		{
-			if (!Directory.Exists(backupsDirectoryPath))
-			{
-				Directory.CreateDirectory(backupsDirectoryPath);
-			}
-		}
-
-		private async Task EnsureSlotConfigFile()
-		{
-			EnsureDataDirectory();
-			if (!File.Exists(_slotConfigPath))
-			{
-				SlotConfig = new SlotConfig();
-				await JsonHandler.WriteToJson(_slotConfigPath, SlotConfig);
-			}
-		}
-
-		private void EnsureSaveFilesDirectories()
-		{
-			EnsureDataDirectory();
-			if (!Directory.Exists(_defaultFilesPath))
-			{
-				Directory.CreateDirectory(_defaultFilesPath);
-				for (int i = 1; i <= 4; i++)
-				{
-					Directory.CreateDirectory(Path.Combine(_defaultFilesPath, $"Chapter{i}"));
-				}
-			}
-			if (!Directory.Exists(_completionFilesPath))
-			{
-				Directory.CreateDirectory(_completionFilesPath);
-				for (int i = 1; i <= 4; i++)
-				{
-					Directory.CreateDirectory(Path.Combine(_completionFilesPath, $"Chapter{i}"));
-				}
-			}
-		}
-
 		// Slots
 		public async Task LoadSlotConfig()
 		{
@@ -174,6 +125,54 @@ namespace LancersSaveSelector.Core.FileManager
 			EnsureBackupsDirectory();
 			await EnsureSlotConfigFile();
 			throw new NotImplementedException();
+		}
+
+		// File and Directory Ensures
+		private void EnsureDataDirectory()
+		{
+			if (!Directory.Exists(dataDirectoryPath))
+			{
+				Directory.CreateDirectory(dataDirectoryPath);
+			}
+		}
+
+		private void EnsureBackupsDirectory()
+		{
+			if (!Directory.Exists(backupsDirectoryPath))
+			{
+				Directory.CreateDirectory(backupsDirectoryPath);
+			}
+		}
+
+		private async Task EnsureSlotConfigFile()
+		{
+			EnsureDataDirectory();
+			if (!File.Exists(_slotConfigPath))
+			{
+				SlotConfig = new SlotConfig();
+				await JsonHandler.WriteToJson(_slotConfigPath, SlotConfig);
+			}
+		}
+
+		private void EnsureSaveFilesDirectories()
+		{
+			EnsureDataDirectory();
+			if (!Directory.Exists(_defaultFilesPath))
+			{
+				Directory.CreateDirectory(_defaultFilesPath);
+				for (int i = 1; i <= 4; i++)
+				{
+					Directory.CreateDirectory(Path.Combine(_defaultFilesPath, $"Chapter{i}"));
+				}
+			}
+			if (!Directory.Exists(_completionFilesPath))
+			{
+				Directory.CreateDirectory(_completionFilesPath);
+				for (int i = 1; i <= 4; i++)
+				{
+					Directory.CreateDirectory(Path.Combine(_completionFilesPath, $"Chapter{i}"));
+				}
+			}
 		}
 	}
 }
